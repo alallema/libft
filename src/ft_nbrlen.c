@@ -1,32 +1,31 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_memalloc.c                                      :+:      :+:    :+:   */
+/*   ft_nbrlen.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: alallema <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: alallema <alallema@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2015/11/24 17:43:03 by alallema          #+#    #+#             */
-/*   Updated: 2015/11/27 20:39:32 by alallema         ###   ########.fr       */
+/*   Created: 2018/12/12 23:38:49 by alallema          #+#    #+#             */
+/*   Updated: 2018/12/12 23:39:02 by alallema         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stdlib.h>
+#include "libft.h"
 
-void		*ft_memalloc(size_t size)
+long	ft_nbrlen(long n, int base)
 {
-	void	*t;
-	char	*s;
-	size_t	i;
+	long	length;
 
-	i = 0;
-	t = (void *)malloc(sizeof(*t) * size);
-	if (t == NULL)
-		return (NULL);
-	s = t;
-	while (i <= size)
+	length = 0;
+	if (n < 0)
 	{
-		s[i] = 0;
-		i++;
+		n = -n;
+		length++;
 	}
-	return (t);
+	while (n > 0)
+	{
+		n = n / base;
+		length++;
+	}
+	return (length);
 }
